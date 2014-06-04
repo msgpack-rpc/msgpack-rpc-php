@@ -16,6 +16,14 @@ class MessagePackRPC_Client
 
   public function send($func, $args)
   {
+    if (!is_array($args)) {
+      if ($args == NULL) {
+        $args = array();
+      } else {
+        $args = array($args);
+      }
+    }
+
     $host    = $this->host;
     $port    = $this->port;
     $code    = 0;
